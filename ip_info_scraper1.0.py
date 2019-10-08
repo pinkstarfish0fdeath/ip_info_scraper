@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Original hacky code to pull ranges from ipinfo.io without using their API. 
+
 import urllib
 import urllib2
 from bs4 import BeautifulSoup
