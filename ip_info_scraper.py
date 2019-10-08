@@ -28,8 +28,10 @@ html = response.content
 # Make soup
 soup = BeautifulSoup(html)
 table = soup.find('table', id="block-table")
+link = soup.find_all('a')
 
 # Print all the IP blocks from the target.
 for row in table.find_all('tr'):
     for cell in row.find_all('td'):
-        print (cell.text.replace('a-z',''))
+        for link in cell.find_all('a'):
+            print(link.text.replace('a-z',''))
