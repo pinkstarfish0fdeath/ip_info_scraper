@@ -14,13 +14,14 @@ def input_loop():
             print("Error! Please use the number only.")
         else:
             print("AS",as_number," is valid... Collecting data.")
-            break
+            return as_number
 
 import requests
 from bs4 import BeautifulSoup
 
 as_number = input_loop()
-url = ('https://ipinfo.io/AS', as_number,)
+url = 'https://ipinfo.io/AS%s'%as_number
+print(url)
 response = requests.get(url)
 html = response.content
 
