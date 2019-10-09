@@ -26,7 +26,7 @@ response = requests.get(url)
 html = response.content
 
 # Make soup
-soup = BeautifulSoup(html)
+soup = BeautifulSoup(html, 'html.parser')
 table = soup.find('table', id="block-table")
 link = soup.find_all('a')
 
