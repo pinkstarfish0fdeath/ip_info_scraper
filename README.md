@@ -1,3 +1,7 @@
+UPDATE
+
+ipinfo.io now requires an API token to retrieve data.  Also they're actively blocking all robot scans.  Good luck guys and gals!
+
 # ip_info_scraper
 Small program that takes any AS number from ipinfo.io and lists all associated IPv4 ranges via stdout.
 
