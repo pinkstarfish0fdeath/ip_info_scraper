@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.7
 
 # Easy recon tool that will pull data from ipinfo.io, disply it to stdout and save it to a CSV file.
 
@@ -18,19 +18,20 @@ def input_loop():
 
 import requests
 from bs4 import BeautifulSoup
-import sys
 
 as_number = input_loop()
 url = 'https://ipinfo.io/AS%s'%as_number
-print(f"getting contents from {url}")
-
-user_agent = {'User-agent': 'Mozilla/5.0'}
-response  = requests.get(url, headers = user_agent)
+print(url)
+response = requests.get(url)
 html = response.content
 
 # Make soup
 soup = BeautifulSoup(html, 'html.parser')
-container = soup.find(id="ipv4-data")
-links = container.findAll('a')
-for a in links:
-    print(a.contents[0])
+table = soup.find('table', id="block-table")
+link = soup.find_all('a')
+
+# Print all the IP blocks from the target.
+for row in table.find_all('tr'):
+    for cell in row.find_all('td'):
+        for link in cell.find_all('a'):
+            print(link.text.replace('a-z',''))
