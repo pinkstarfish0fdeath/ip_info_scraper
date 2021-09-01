@@ -32,5 +32,10 @@ html = response.content
 soup = BeautifulSoup(html, 'html.parser')
 container = soup.find(id="ipv4-data")
 links = container.findAll('a')
-for a in links:
-    print(a.contents[0])
+
+for i,a in enumerate(links):
+    if "Show" not in a.contents[0]:
+        d = ''
+        if (i > 0):
+            d = ','
+        print(f'{d}{a.contents[0]}', end='')
